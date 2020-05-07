@@ -56,13 +56,16 @@ int main(int argc, char const *argv[])
     }
     int child=fork();
     if (child==0){
-    setuid(65534);
-    int check = getuid();
-    printf("the uid is: %d", check);
-    valread = read( new_socket , buffer, 1024); 
-    printf("%s\n",buffer ); 
-    send(new_socket , hello , strlen(hello) , 0 ); 
-    printf("Hello message sent\n"); 
+        char abc[25];
+        sprintf(abc, "%d", new_socket);
+        char *args[] = {"./child", abc, NULL};
+        int a = execvp(args[0], args);
+        if(a < 0)
+        {
+             perror("Faileddddd"); 
+            exit(EXIT_FAILURE); 
+        }
+//     
     return 0; 
 }
 } 
