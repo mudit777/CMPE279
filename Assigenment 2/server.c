@@ -56,9 +56,10 @@ int main(int argc, char const *argv[])
     }
     int child=fork();
     if (child==0){
+        // setuid(65534);
         char abc[25];
         sprintf(abc, "%d", new_socket);
-        char *args[] = {"./child", abc, NULL};
+        char *args[] = {"./child",abc, NULL};
         int a = execvp(args[0], args);
         if(a < 0)
         {

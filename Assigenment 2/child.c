@@ -11,7 +11,9 @@ int main(int argc, char const *argv[])
    int new_socket, valread; 
     char buffer[1024] = {0}; 
     char *hello = "Hello from server";
+    printf("Assign a socket...");
   new_socket = atoi(argv[1]);
+  printf("Assigned a socket... new_socket = %d", new_socket);
   
   
 setuid(65534);
