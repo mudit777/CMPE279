@@ -41,6 +41,11 @@ int main(int argc, char const *argv[])
         perror("bind failed"); 
         exit(EXIT_FAILURE); 
     } 
+     int child=fork();
+    if (child==0){
+    setuid(65534);
+    int check = getuid();
+    printf("the uid is: %d", check);
     if (listen(server_fd, 3) < 0) 
     { 
         perror("listen"); 
